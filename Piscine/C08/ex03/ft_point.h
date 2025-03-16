@@ -6,7 +6,7 @@
 /*   By: matmagal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 01:10:38 by matmagal          #+#    #+#             */
-/*   Updated: 2025/03/16 02:16:39 by matmagal         ###   ########.fr       */
+/*   Updated: 2025/03/16 02:18:05 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,3 @@ typedef struct s_point
 void	set_point(t_point *point);
 
 #endif
-
-teste teste
