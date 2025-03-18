@@ -1,50 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*   ft_convert_base2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matmagal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 23:21:09 by matmagal          #+#    #+#             */
-/*   Updated: 2025/03/17 18:58:45 by matmagal         ###   ########.fr       */
+/*   Created: 2025/03/17 18:58:08 by matmagal          #+#    #+#             */
+/*   Updated: 2025/03/18 01:06:06 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
-int	base_len(char *str)
+void	ft_putchar(char c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	write(1, &c, 1);
 }
 
-int	base_check(char *str)
+int	base_len(char	*str)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	if (!*str || base_len
-	(str) == 1)
-		return (0);
-	while (str[i] != '\0')
-	{
-		j = i + 1;
-		while (str[j] != '\0')
-		{
-			if (str[i] == str[j])
-				return (0);
-			j++;
-		}
-		if (str[i] == '-' || str[i] == '+' || (str[i] < 33 && str[i] > 6))
-			return (0);
+	while (str[i])
 		i++;
-	}
-	return (1);
+	return (i);
 }
 
 int	check_signal(int *i, char *str)
@@ -82,25 +62,26 @@ int	index_check(char *base, char c)
 	return (-1);
 }
 
-int	ft_atoi_base(char *str, char *base)
+int	base_check(char *base)
 {
 	int	i;
-	int	nb;
-	int	check;
+	int	j;
 
-	nb = 0;
 	i = 0;
-	if (base_check(base) == 0)
+	if (!*base || base_len(base) == 1)
 		return (0);
-	check = check_signal
-(&i, str);
-	while (str[i] != '\0')
+	while (base[i])
 	{
-		if (index_check(base, str[i]) == -1)
-			break ;
-		nb = (nb * base_len
-		(base) + index_check(base, str[i]));
+		if (base[i] == '+' || base[i] == '-' || base[i] <= 32 || base[i] == 127)
+			return (0);
+		j = i + 1;
+		while (base[j])
+		{
+			if (base[i] == base[j])
+				return (0);
+			j++;
+		}
 		i++;
 	}
-	return (nb * check);
+	return (1);
 }

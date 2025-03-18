@@ -6,7 +6,7 @@
 /*   By: matmagal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 23:27:11 by matmagal          #+#    #+#             */
-/*   Updated: 2025/03/15 22:06:14 by matmagal         ###   ########.fr       */
+/*   Updated: 2025/03/18 01:02:39 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_strcat(char *dest, char *src)
 
 	i = 0;
 	destlen = ft_strlen(dest);
-	while(src[i])
+	while (src[i])
 	{
 		dest[destlen + i] = src[i];
 		i++;
@@ -55,8 +55,6 @@ char	*ft_strcat(char *dest, char *src)
 	dest[destlen + i] = '\0';
 	return (dest);
 }
-
-
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
@@ -94,7 +92,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
     char *result = ft_strjoin(4, strs, sep);
     if (result != NULL)
     {
-        printf("Resultado: %s\n", result); // Deve imprimir "Hello, World, C, Programming"
+        printf("Resultado: %s\n", result);
         free(result);
     }
     else
@@ -106,7 +104,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
     char *empty_result = ft_strjoin(0, NULL, NULL);
     if (empty_result != NULL)
     {
-        printf("Resultado (size == 0): %s\n", empty_result); // Deve imprimir uma string vazia
+        printf("Resultado (size == 0): %s\n", empty_result);
         free(empty_result);
     }
     else
