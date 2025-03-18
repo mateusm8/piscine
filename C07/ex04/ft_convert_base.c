@@ -6,7 +6,7 @@
 /*   By: matmagal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:52:26 by matmagal          #+#    #+#             */
-/*   Updated: 2025/03/18 01:52:06 by matmagal         ###   ########.fr       */
+/*   Updated: 2025/03/18 21:53:12 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	ft_putnbr_base(int nbr, char *base, char *ptr)
 	nb = nbr;
 	i = count_digits_in_base(nbr, base);
 	len_base = base_len(base);
-	if (base_check(base) == 0)
-		return ;
 	if (nb < 0)
 	{
 		ptr[0] = '-';
@@ -57,8 +55,6 @@ int	ft_atoi_base(char *str, char *base)
 
 	nb = 0;
 	i = 0;
-	if (base_check(base) == 0)
-		return (0);
 	check = check_signal(&i, str);
 	while (str[i] != '\0')
 	{
@@ -80,13 +76,9 @@ int	count_digits_in_base(int nbr, char *base)
 	len_base = base_len(base);
 	nb = nbr;
 	if (len_base <= 0)
-	{
 		return (-1);
-	}
 	if (nb < 0)
-	{
 		nb = -nb;
-	}
 	if (nb == 0)
 		return (1);
 	while (nb > 0)
@@ -113,7 +105,6 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 		ptr = (char *) malloc(digits + 1);
 		if (ptr == NULL)
 			return (NULL);
-		ptr[0] = '-';
 	}
 	else
 	{
@@ -125,7 +116,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	return (ptr);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	printf("%s\n", ft_convert_base("-10", "0123456789", "01"));
-}
+}*/

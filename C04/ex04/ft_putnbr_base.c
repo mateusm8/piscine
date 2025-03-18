@@ -6,7 +6,7 @@
 /*   By: matmagal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:58:35 by matmagal          #+#    #+#             */
-/*   Updated: 2025/03/17 18:58:18 by matmagal         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:13:03 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	ft_putnbr_base(int nbr, char *base)
 	ft_putchar(base[nb % len_base]);
 }
 
-/*int	main(void)
+int	main(void)
 {
-	ft_putnbr_base(50, "01");
+	ft_putnbr_base(10, "Mateus");
 	ft_putchar('\n');
 	return (0);
-}*/
+}
