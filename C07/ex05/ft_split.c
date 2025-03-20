@@ -6,21 +6,11 @@
 /*   By: matmagal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:23:31 by matmagal          #+#    #+#             */
-/*   Updated: 2025/03/19 00:18:19 by matmagal         ###   ########.fr       */
+/*   Updated: 2025/03/19 22:57:51 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 int	check_sep(char c, char *sep)
 {
@@ -57,31 +47,61 @@ int	count_str(char *str, char *sep)
 	return (count);
 }
 
-char **alocmem(char *str, char **ptr, char *sep, int size)
+ char *cpy_str(char *str, char *sep)
+ {
+	int		i;
+	int		j;
+	char	*strs;
+
+	i = 0;
+	while (str[i] && !check_sep(str[i], sep))
+		i++;
+	strs = (char *) malloc((i + 1) * sizeof(char));
+	if (strs == NULL)
+		return (NULL);
+	j = 0;
+	while (j < i)
+	{
+		strs[j] = str[j];
+		j++;
+	}
+	strs[j] = '\0';
+	return (strs);
+ }
+
+char	**add_array(char **strs, char *str, char *sep)
 {
 	int	i;
 	int	j;
 
 	i = 0;
+	j = 0;
 	while (str[i])
 	{
-		j = 0;
-		while (str[i + j] == sep[j] && sep[j] != '\0')
+		while (str[i] && check_sep(str[i], sep))
+			i++;
+		if (str[i] && !check_sep(str[i], sep))
 		{
+			strs[j] = cpy_str(str + i, sep);
+			if (strs[j] == NULL)
+				return (NULL);
 			j++;
-			if (sep[j] == '\0')
+			while (str[i] && !check_sep(str[i], sep))
+				i++;
 		}
 	}
+	strs[j] = NULL;
+	return (strs);
 }
 
 char	**ft_split(char *str, char *sep)
 {
-	char	**ptr;
 	int		i;
-	
-	i = 0;
-	ptr = (char **) malloc((c_str(str, sep) + 1) * sizeof(char));
-	if (ptr == NULL)
-		return (NULL);
+	char	**strs;
 
+	i = count_str(str, sep);
+	strs = (char **) malloc((i + 1) * sizeof(char *));
+	if (strs == NULL)
+		return (NULL);
+	return (add_array(strs, str, sep));
 }
